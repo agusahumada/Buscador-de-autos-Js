@@ -113,7 +113,20 @@ function filtrarAuto() {
     .filter(filtrarTransmision)
     .filter(filtrarColor);
 
-  mostrarAutos(resultado);
+  if (resultado.length) {
+    mostrarAutos(resultado);
+  } else {
+    noResultado();
+  }
+}
+
+function noResultado() {
+  limpiarHTML();
+
+  const noResultado = document.createElement("div");
+  resultado.classList.add("alerta", "error");
+  noResultado.textContent = "No hay resultados";
+  resultado.appendChild(noResultado);
 }
 
 function filtrarMarca(auto) {
